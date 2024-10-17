@@ -3,10 +3,9 @@ import { files } from 'dropbox';
 
 
 type FileMetadata = files.FileMetadataReference;
-const dbx = new Dropbox({ accessToken: process.env.NEXT_PUBLIC_DROPBOX_ACCESS_TOKEN });
 
-export async function getWavFiles() {
-  console.log(process.env.NEXT_PUBLIC_DROPBOX_ACCESS_TOKEN);
+export async function getWavFiles(accessToken: string) {
+  const dbx = new Dropbox({ accessToken: accessToken });
 
   try {
     // dbx.usersGetCurrentAccount()

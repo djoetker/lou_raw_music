@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 
-import { downloadWavFile, getWavFiles } from '../../_api/dropbox/dropbox';
+import { downloadWavFile, getWavFiles } from '../../api/dropbox/dropbox';
 import { Play, Pause } from './Symbols';
+import { refreshAccessToken } from '../../api/other/refreshAccessToken.js';
 
 
 type DropboxFile = {
@@ -17,29 +18,54 @@ export default function MusicPlayer() {
   const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  useEffect(() => {
-    async function fetchFiles() {
-      const wavFiles = await getWavFiles();
-      setFiles(wavFiles);
-      console.log("wavFiles", wavFiles)
+  // useEffect(() => {
+  //   async function fetchFiles() {
+  //     const wavFiles = await getWavFiles();
+  //     setFiles(wavFiles);
+  //     console.log("wavFiles", wavFiles)
 
-      const audioMap: { [id: string]: HTMLAudioElement } = {};
-      console.log("before loop");
-      for (const file of wavFiles) {
-        const fileUrl = await downloadWavFile(file.path_lower);
-        if (fileUrl) {
-          audioMap[file.id] = new Audio(fileUrl);
-          // finished loading
+  //     const audioMap: { [id: string]: HTMLAudioElement } = {};
+  //     console.log("before loop");
+  //     for (const file of wavFiles) {
+  //       const fileUrl = await downloadWavFile(file.path_lower);
+  //       if (fileUrl) {
+  //         audioMap[file.id] = new Audio(fileUrl);
+  //         // finished loading
+  //       }
+  //     }
+  //     setAudioInstances(audioMap);
+  //     console.log("audioMap", audioMap);
+  //   }
+
+  //   fetchFiles();
+
+  //   console.log(files);
+  // }, []);
+
+  useEffect(() => {
+    async function checkAndFetchFiles() {
+      try {
+        const clientId = process.env.REACT_APP_DROPBOX_CLIENT_ID;
+        const clientSecret = process.env.REACT_APP_DROPBOX_CLIENT_SECRET;
+
+        // If the token is invalid or expired, refresh it
+        const access_token = await refreshAccessToken(clientId, clientSecret);
+
+        if (!access_token) {
+          throw new Error('Unable to refresh access token');
         }
+
+        // At this point, we should have a valid access token
+        const wavFiles = await getWavFiles(access_token);
+        setFiles(wavFiles);
+      } catch (error) {
+        console.error('Error checking or fetching token:', error);
       }
-      setAudioInstances(audioMap);
-      console.log("audioMap", audioMap);
     }
 
-    fetchFiles();
-
-    console.log(files);
+    checkAndFetchFiles();
   }, []);
+
 
   const playFile = async (fileId: string) => {
     if (!audioInstances[fileId]) return;
