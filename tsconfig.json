@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/dropbox/auth/route.js"
+    "app/api/s3/auth/route.js"
   ],
   "exclude": [
     "node_modules"
