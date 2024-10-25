@@ -20,7 +20,7 @@ export async function GET(req) {
   try {
     const data = await s3Client.send(new ListObjectsV2Command(params));
     const files = data.Contents.map((file) => {
-
+      console.log("file:", file.Key);
       return {
         key: file.Key,
         url: `https://${bucketName}.s3.${process.env.AWS_S3_REGION}.amazonaws.com/${file.Key}`,

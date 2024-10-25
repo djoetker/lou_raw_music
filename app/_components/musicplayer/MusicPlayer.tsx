@@ -68,7 +68,7 @@ export default function MusicPlayer() {
             {isPlaying && currentTrackId === file.key ? <Pause /> : <Play />}
           </button>
           <div>
-            <p>{file.key.split('/').pop()}</p>
+            <p>{file.key.slice(0, -4)}</p>
           </div>
         </div>
       ))}
