@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-// pages/api/s3/getFiles.js
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 
 const s3Client = new S3Client({
@@ -27,7 +26,7 @@ export async function GET(req) {
       };
     });
 
-    return NextResponse.json(files); // Use NextResponse to send a JSON response
+    return NextResponse.json(files);
   } catch (error) {
     console.error('Error fetching files from S3:', error);
     return NextResponse.json({ error: 'Failed to fetch files from S3' }, { status: 500 });

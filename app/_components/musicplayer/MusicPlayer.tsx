@@ -1,3 +1,5 @@
+import { useAudio } from '../../_context/audioContext';
+
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Play, Pause } from './Symbols';
@@ -15,29 +17,31 @@ interface AudioInstances {
 
 export default function MusicPlayer() {
   // State for storing files and audio instances
-  const [files, setFiles] = useState<S3File[]>([]);
-  const [audioInstances, setAudioInstances] = useState<AudioInstances>({});
-  const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  // const [files, setFiles] = useState<S3File[]>([]);
+  // const [audioInstances, setAudioInstances] = useState<AudioInstances>({});
+  // const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
+  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  useEffect(() => {
-    async function fetchFiles() {
-      const response = await fetch('http://localhost:3000/api/s3/getFiles');
-      const files: S3File[] = await response.json(); // Type the response as an array of S3File
-      console.log("files:", files);
-      setFiles(files);
+  // useEffect(() => {
+  //   async function fetchFiles() {
+  //     const response = await fetch('http://localhost:3000/api/s3/getFiles');
+  //     const files: S3File[] = await response.json();
+  //     console.log("files:", files);
+  //     setFiles(files);
 
-      const audioMap: AudioInstances = {};
-      files.forEach(file => {
-        console.log('Audio URL:', file.url);
-        audioMap[file.key] = new Audio(file.url);
-      });
-      setAudioInstances(audioMap);
-      console.log("audioInstances:", audioInstances);
-    }
+  //     const audioMap: AudioInstances = {};
+  //     files.forEach(file => {
+  //       console.log('Audio URL:', file.url);
+  //       audioMap[file.key] = new Audio(file.url);
+  //     });
+  //     setAudioInstances(audioMap);
+  //     console.log("audioInstances:", audioInstances);
+  //   }
 
-    fetchFiles();
-  }, []);
+  //   fetchFiles();
+  // }, []);
+
+  const { files, audioInstances, currentTrackId, isPlaying, setIsPlaying, setCurrentTrackId } = useAudio();
 
   const playFile = (fileId: string) => {
     if (!audioInstances[fileId]) return;
@@ -72,6 +76,9 @@ export default function MusicPlayer() {
           </div>
         </div>
       ))}
+      <div className=''>
+
+      </div>
     </div>
   );
 }
