@@ -6,7 +6,7 @@ type AudioContextProviderProps = {
   children: React.ReactNode;
 };
 
-auinterface S3File {
+interface S3File {
   key: string;
   url: string;
 }
