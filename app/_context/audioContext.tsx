@@ -31,6 +31,7 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
   const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
+
   useEffect(() => {
     async function fetchFiles() {
       const response = await fetch('http://localhost:3000/api/s3/getFiles');

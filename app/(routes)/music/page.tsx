@@ -8,8 +8,6 @@ export default function Music() {
 
   return (
     <>
-      <h2>music</h2>
-
       <MusicPlayer />
     </>
   )

@@ -21,7 +21,7 @@ export default function RootLayout({
         <AudioContextProvider>
           <Navbar />
           <main className="max-w-screen-xl min-h-550 h-screen max-h-800">
-            <section className="border-2 border-black min-h-[600px] h-5/6 max-h-800">
+            <section className="border-2 border-black min-h-[600px] h-5/6 h-fit">
 
               {children}
 
