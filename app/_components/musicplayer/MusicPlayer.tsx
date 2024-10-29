@@ -2,6 +2,7 @@ import { useAudio } from '../../_context/audioContext';
 
 import React from 'react';
 import { Play, Pause } from './Symbols';
+import Player from './Player';
 
 export default function MusicPlayer() {
   const { files, audioInstances, currentTrackId, isPlaying, setIsPlaying, setCurrentTrackId } = useAudio();
@@ -28,20 +29,22 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="flex flex-row flex-wrap gap-[0.5rem] p-[0.25rem]">
-      {files.map(file => (
-        <div className="flex flex-row items-center border-[1px] border-black w-fit px-[0.5rem]" key={file.key}>
-          <button className="h-[2rem] pr-[0.25rem]" onClick={() => playFile(file.key)}>
-            {isPlaying && currentTrackId === file.key ? <Pause /> : <Play />}
-          </button>
-          <div>
-            <p>{file.key.slice(0, -4)}</p>
+    <div className="flex flex-col flex-wrap gap-[0.5rem] p-[0.25rem] h-full">
+      <section className='flex flex-row flex-wrap gap-[1.5rem] justify-items-auto place-content-start p-[0.25rem] h-4/5'>
+        {files.map(file => (
+          <div className="flex flex-row items-center border-[1px] border-black w-fit px-[1.5rem] h-fit" key={file.key}>
+            <button className="h-[2rem] pr-[0.25rem]" onClick={() => playFile(file.key)}>
+              {isPlaying && currentTrackId === file.key ? <Pause /> : <Play />}
+            </button>
+            <div>
+              <p>{file.key.slice(0, -4)}</p>
+            </div>
           </div>
-        </div>
-      ))}
-      <div className=''>
-
-      </div>
+        ))}
+      </section>
+      <section className='flex flex-row justify-center items-center w-full '>
+        <Player />
+      </section>
     </div>
   );
 }
