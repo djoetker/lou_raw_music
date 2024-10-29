@@ -1,46 +1,9 @@
 import { useAudio } from '../../_context/audioContext';
 
-import { useEffect, useState } from 'react';
 import React from 'react';
 import { Play, Pause } from './Symbols';
 
-// Define the type for a file returned from your API
-interface S3File {
-  key: string;
-  url: string;
-}
-
-// Define the type for audio instances
-interface AudioInstances {
-  [key: string]: HTMLAudioElement;
-}
-
 export default function MusicPlayer() {
-  // State for storing files and audio instances
-  // const [files, setFiles] = useState<S3File[]>([]);
-  // const [audioInstances, setAudioInstances] = useState<AudioInstances>({});
-  // const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   async function fetchFiles() {
-  //     const response = await fetch('http://localhost:3000/api/s3/getFiles');
-  //     const files: S3File[] = await response.json();
-  //     console.log("files:", files);
-  //     setFiles(files);
-
-  //     const audioMap: AudioInstances = {};
-  //     files.forEach(file => {
-  //       console.log('Audio URL:', file.url);
-  //       audioMap[file.key] = new Audio(file.url);
-  //     });
-  //     setAudioInstances(audioMap);
-  //     console.log("audioInstances:", audioInstances);
-  //   }
-
-  //   fetchFiles();
-  // }, []);
-
   const { files, audioInstances, currentTrackId, isPlaying, setIsPlaying, setCurrentTrackId } = useAudio();
 
   const playFile = (fileId: string) => {
