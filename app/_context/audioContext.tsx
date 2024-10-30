@@ -34,7 +34,7 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
 
   useEffect(() => {
     async function fetchFiles() {
-      const response = await fetch('http://localhost:3000/api/s3/getFiles');
+      const response = await fetch(`${process.env.API_URL}/api/s3/getFiles`);
       const files: S3File[] = await response.json();
       console.log("files:", files);
       setFiles(files);
