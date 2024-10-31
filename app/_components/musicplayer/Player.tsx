@@ -23,8 +23,10 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
 
   if (fileKey === "") {
     return (
-      <div className="flex flex-col justify-center items-center border-2 border-solid p-2">
-        <section><p className='opacity-50 italic h-[3rem]'>load a track into player</p></section>
+      <div className="flex flex-col justify-center items-center min-w-[300px] border-2 border-solid p-2">
+        <section>
+          <p className='opacity-50 italic h-[3rem] mb-[0.75rem]'>load a track into player</p>
+        </section>
         <section className='flex flex-col gap-[0.5rem]'>
           <Timeline />
         </section>
@@ -35,12 +37,12 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
     )
   } else {
     return (
-      <div className="flex flex-col justify-center items-center border-2 border-solid p-4">
-        <section>
+      <div className="flex flex-col justify-center items-center min-w-[300px] border-2 border-solid p-4">
+        <section className='w-4/5'>
           <p className="font-hairline">{fileKey.slice(0, -4)}</p>
-          <p className='font-hairline text-[0.7rem] mb-[0.5rem]'>LOU RAW</p>
+          <p className='font-hairline text-[0.7rem] mb-[0.75rem]'>LOU RAW</p>
         </section>
-        <section className='flex flex-col gap-[0.5rem]'>
+        <section className='flex flex-col gap-[0.5rem] w-4/5'>
           <Timeline />
         </section>
         <button className="flex justify-center items-center left-8 h-fit border-[2px] border-solid rounded-full p-4 " onClick={() => playFile(fileKey)}>

@@ -23,6 +23,9 @@ export default function MusicPlayer() {
 
   return (
     <div className="flex flex-col flex-wrap gap-[0.5rem] p-[0.25rem] h-full">
+      <section className='flex flex-row justify-center items-center w-full h-fit'>
+        <Player fileKey={nowPlaying} />
+      </section>
       <section className='flex flex-row flex-wrap gap-[0.5rem] justify-between place-content-start p-[0.25rem] h-4/5'>
         {files.map(file => (
           <div className="flex justify-start gap-[1rem] items-center border-[1px] border-black w-fit p-[1rem] h-fit" key={file.key}  >
@@ -34,9 +37,6 @@ export default function MusicPlayer() {
             </div>
           </div>
         ))}
-      </section>
-      <section className='flex flex-row justify-center items-center w-full h-fit'>
-        <Player fileKey={nowPlaying} />
       </section>
     </div>
   );

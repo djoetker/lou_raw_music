@@ -23,7 +23,7 @@ export default function Navbar() {
           <Link href="/" onClick={() => stopMusic()}>
             <p>HOME</p>
           </Link>
-          <Link href="/music">
+          <Link href="/music" onClick={() => stopMusic()}>
             <p>MUSIC</p>
           </Link>
         </ul>

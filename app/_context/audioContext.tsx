@@ -36,16 +36,13 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
     async function fetchFiles() {
       const response = await fetch(`/api/s3/getFiles`);
       const files: S3File[] = await response.json();
-      console.log("files:", files);
       setFiles(files);
 
       const audioMap: AudioInstances = {};
       files.forEach(file => {
-        console.log('Audio URL:', file.url);
         audioMap[file.key] = new Audio(file.url);
       });
       setAudioInstances(audioMap);
-      console.log("audioInstances:", audioInstances);
     }
 
     fetchFiles();
