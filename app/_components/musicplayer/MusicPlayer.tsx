@@ -26,10 +26,10 @@ export default function MusicPlayer() {
       <section className='flex flex-row justify-center items-center w-full h-fit'>
         <Player fileKey={nowPlaying} />
       </section>
-      <section className='flex flex-row flex-wrap gap-[0.5rem] justify-between place-content-start p-[0.25rem] h-4/5'>
+      <section className='flex flex-row flex-wrap gap-[0.5rem] justify-between place-content-start p-[0.25rem] h-4/5 overflow-hidden overflow-y-scroll'>
         {files.map(file => (
           <div className="flex justify-start gap-[1rem] items-center border-[1px] border-black w-fit p-[1rem] h-fit" key={file.key}  >
-            <button className='border-[1px] border-black' title='load track to player' onClick={() => selectForPlayer(file.key)}>
+            <button className='border-[1px] border-black shadow-xl active:shadow-none active:shadow-inner' title='load track to player' onClick={() => selectForPlayer(file.key)}>
               <ChooseTrack />
             </button>
             <div>
