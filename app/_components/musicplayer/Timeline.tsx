@@ -40,10 +40,7 @@ export default function Timeline() {
 
   return (
     <>
-      <p className='text-[0.75rem]'>
-        {currentTrackId ? getFormattedDuration(audioInstances[currentTrackId].currentTime) : "0:00"}
-      </p>
-      <section className='flex items-center'>
+      <section className='flex items-center min-w[300px] '>
         <input
           className='h-[0.25rem] w-[100%] bg-gray-300'
           type="range"
@@ -54,9 +51,14 @@ export default function Timeline() {
           onChange={handleSeek}
         />
       </section>
-      <p className='text-[0.75rem]'>
-        {currentTrackId ? (getFormattedDuration(audioInstances[currentTrackId].duration)) : "-:--"}
-      </p>
+      <section className="flex justify-between">
+        <p className='text-[0.75rem]'>
+          {currentTrackId ? getFormattedDuration(audioInstances[currentTrackId].currentTime) : "0:00"}
+        </p>
+        <p className='text-[0.75rem]'>
+          {currentTrackId ? (getFormattedDuration(audioInstances[currentTrackId].duration)) : "-:--"}
+        </p>
+      </section>
     </>
   )
 }
