@@ -23,7 +23,7 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
 
   if (fileKey === "") {
     return (
-      <div className="flex flex-col justify-center items-center min-w-[300px] max-h-[300px] border-2 border-solid p-2">
+      <div className="flex flex-col justify-center items-center min-w-[300px] max-h-[300px] p-2">
 
         <section>
           <p className='opacity-50 italic h-[3rem] mb-[0.75rem]'>load a track into player</p>
@@ -38,7 +38,7 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
     )
   } else {
     return (
-      <div className="flex flex-col justify-center items-center min-w-[300px] border-2 border-solid p-4">
+      <div className="flex flex-col justify-center items-center min-w-[300px] p-4">
         <section className='w-4/5'>
           <p className="font-hairline">{fileKey.slice(0, -4)}</p>
           <p className='font-hairline text-[0.7rem] mb-[0.75rem]'>LOU RAW</p>

@@ -40,9 +40,9 @@ export default function Timeline() {
 
   return (
     <>
-      <section className='flex items-center min-w[300px] '>
+      <section className='flex items-center min-w-[300px] '>
         <input
-          className='h-[0.25rem] w-[100%] bg-gray-300'
+          className='h-[0.25rem] w-[100%] min-w-[150px] bg-gray-300'
           type="range"
           name='timeline'
           min="0"

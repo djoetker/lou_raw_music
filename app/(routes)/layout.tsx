@@ -22,7 +22,7 @@ export default function RootLayout({
         <AudioContextProvider>
           <Navbar />
           <main className="max-w-screen-xl min-h-550 h-screen max-h-800">
-            <section className="border-2 border-black min-h-[600px] h-5/6 bg-transparent relative" id="content_container">
+            <section className="flex flex-row border-2 border-black min-h-[600px] h-5/6 bg-transparent relative w-full" id="content_container">
               <P5Background />
               <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
