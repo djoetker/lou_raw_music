@@ -23,7 +23,8 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
 
   if (fileKey === "") {
     return (
-      <div className="flex flex-col justify-center items-center min-w-[300px] border-2 border-solid p-2">
+      <div className="flex flex-col justify-center items-center min-w-[300px] max-h-[300px] border-2 border-solid p-2">
+
         <section>
           <p className='opacity-50 italic h-[3rem] mb-[0.75rem]'>load a track into player</p>
         </section>
