@@ -39,7 +39,7 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
   } else {
     return (
       <div className="flex flex-col justify-center items-center min-w-[300px] max-h-[300px] p-2">
-        <section className='w-full'>
+        <section className='w-full h-[3rem]'>
           <p className="font-hairline">{fileKey.slice(0, -4)}</p>
           <p className='font-hairline text-[0.7rem] mb-[0.75rem]'>LOU RAW</p>
         </section>

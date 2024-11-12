@@ -9,7 +9,9 @@ const P5Background = () => {
         this.pos = p.createVector(p.random(p.width), p.random(p.height));
         this.vel = p5.Vector.random2D();
         this.acc = p.createVector(0, 0);
-        this.maxspeed = 2;
+        this.maxspeed = 4;
+
+        this.prevPos = this.pos.copy();
 
         this.update = function () {
           this.vel.add(this.acc);
@@ -25,21 +27,34 @@ const P5Background = () => {
         this.show = function () {
           p.stroke(0, 5);
           p.strokeWeight(1);
-          p.point(this.pos.x, this.pos.y);
+          p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
+          this.updatePrev();
+          // p.point(this.pos.x, this.pos.y);
+        }
+
+        this.updatePrev = function () {
+          this.prevPos.x = this.pos.x;
+          this.prevPos.y = this.pos.y;
         }
 
         this.edges = function () {
           if (this.pos.x > p.width) {
             this.pos.x = 0;
+            this.updatePrev();
           }
           if (this.pos.x < 0) {
             this.pos.x = p.width;
+            this.updatePrev();
+
           }
           if (this.pos.y > p.height) {
             this.pos.y = 0;
+            this.updatePrev();
+
           }
           if (this.pos.y < 0) {
             this.pos.y = p.height;
+            this.updatePrev();
           }
         }
 
@@ -54,12 +69,12 @@ const P5Background = () => {
 
       let container;
       var inc = 0.5;
-      var scale = 10;
+      var scale = 30;
       var cols, rows;
       var zoff = 0;
       var particles = [];
 
-      var flowfield;
+      var flowfield = [];
 
       p.setup = () => {
         container = document.getElementById("content_container");
@@ -73,9 +88,8 @@ const P5Background = () => {
         cols = p.width / scale;
         rows = p.height / scale;
 
-        flowfield = new Array(cols * rows);
 
-        for (let i = 0; i < 1000; i++) {
+        for (let i = 0; i < 2500; i++) {
           particles[i] = new Particle();
         };
 
@@ -106,14 +120,14 @@ const P5Background = () => {
             // p.pop();
           }
           yoff += 0.1;
-          zoff += 0.0001;
+          zoff += 0.00005;
         }
 
         for (let i = 0; i < particles.length; i++) {
           particles[i].follow(flowfield);
           particles[i].update();
-          particles[i].show();
           particles[i].edges();
+          particles[i].show();
         }
       };
 
@@ -121,7 +135,7 @@ const P5Background = () => {
         container = document.getElementById("content_container");
         if (container) {
           p.resizeCanvas(container.offsetWidth, container.offsetHeight);
-          p.background(150);
+          // p.background(150);
 
         }
       };
