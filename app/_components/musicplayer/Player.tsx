@@ -38,12 +38,12 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
     )
   } else {
     return (
-      <div className="flex flex-col justify-center items-center min-w-[300px] p-4">
-        <section className='w-4/5'>
+      <div className="flex flex-col justify-center items-center min-w-[300px] max-h-[300px] p-2">
+        <section className='w-full'>
           <p className="font-hairline">{fileKey.slice(0, -4)}</p>
           <p className='font-hairline text-[0.7rem] mb-[0.75rem]'>LOU RAW</p>
         </section>
-        <section className='flex flex-col gap-[0.5rem] w-4/5'>
+        <section className='flex flex-col gap-[0.5rem]'>
           <Timeline />
         </section>
         <button className="flex justify-center items-center left-8 h-fit border-[2px] border-solid rounded-full p-4 " onClick={() => playFile(fileKey)}>

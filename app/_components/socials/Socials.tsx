@@ -8,10 +8,10 @@ export default function Socials() {
       {Object.entries(socialsList).map(([section, links], index) => (
         <div key={index} className="flex flex-col flex-wrap items-center mb-1 min-w-[400px] h-fit mt-[1rem]">
           <h2 className="text-2xl font-semibold mb-1">{section}</h2>
-          <div className="">
+          <div>
             {Object.entries(links).map(([platform, url], idx) => (
               <div key={idx}>
-                <a href={url} target="_blank" rel="noopener noreferrer" className="block bg-white text-black border border-solid border-black rounded-sm hover:bg-slate-100 py-[0.75rem] px-[1.5rem] my-[1rem] text-center min-w-[400px]	">
+                <a href={url} target="_blank" rel="noopener noreferrer" className="block bg-[#f5f5f5] bg-opacity-70 text-black border border-solid border-black rounded-sm hover:bg-slate-100 py-[0.75rem] px-[1.5rem] my-[1rem] text-center min-w-[400px]	">
                   {platform}
                 </a>
               </div>
