@@ -19,7 +19,7 @@ export default function MusicPlayer() {
 
   return (
     <section className='flex flex-wrap w-1/2 h-full justify-center content-center'>
-      <div className="flex flex-col gap-[0.5rem] p-[0.25rem] h-fit	overflow-x-scroll	min-w-[300px] w-fit bg-[#f5f5f5] rounded-sm p-[1rem]">
+      <div className="flex flex-col gap-[0.5rem] p-[0.25rem] h-fit	overflow-x-scroll	min-w-[300px] w-fit bg-[#f5f5f5] bg-opacity-70 rounded-sm p-[1rem]">
         <section className='flex flex-col justify-center items-center w-full h-fit'>
           <section className='flex flex-col justify-center border border-solid p-2 overflow-x-scroll min-h-[200px] max-h-[200px] bg-[#f5f5f5] bg-opacity-70 w-full border-black border border-solid'>
             {files.map(file => (
