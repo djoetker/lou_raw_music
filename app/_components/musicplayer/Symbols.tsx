@@ -18,5 +18,20 @@ export const Pause = () => {
   );
 };
 
+export const NextTrack = () => {
+  return (
+    <svg className="h-[1.5rem]" viewBox="0 0 60 60">
+      <polygon points="0,0 40,30 0,60" />
+      <rect x="45" y="0" width="10" height="60" />
+    </svg>
+  );
+};
 
-
+export const PreviousTrack = () => {
+  return (
+    <svg className="h-[1.5rem]" viewBox="0 0 60 60">
+      <polygon points="60,0 20,30 60,60" />
+      <rect x="5" y="0" width="10" height="60" />
+    </svg>
+  );
+};

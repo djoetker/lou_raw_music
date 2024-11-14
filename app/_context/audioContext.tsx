@@ -21,6 +21,7 @@ interface AudioContextValue {
   isPlaying: boolean;
   setIsPlaying: (playing: boolean) => void;
   setCurrentTrackId: (trackId: string | null) => void;
+  isLoading: boolean;
 }
 
 const AudioContext = createContext<AudioContextValue | undefined>(undefined);
@@ -30,6 +31,7 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
   const [audioInstances, setAudioInstances] = useState<AudioInstances>({});
   const [currentTrackId, setCurrentTrackId] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
 
   useEffect(() => {
@@ -43,6 +45,7 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
         audioMap[file.key] = new Audio(file.url);
       });
       setAudioInstances(audioMap);
+      setIsLoading(false);
     }
 
     fetchFiles();
@@ -50,7 +53,7 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
 
 
   return (
-    <AudioContext.Provider value={{ files, audioInstances, currentTrackId, isPlaying, setIsPlaying, setCurrentTrackId }} >
+    <AudioContext.Provider value={{ files, audioInstances, currentTrackId, isPlaying, setIsPlaying, setCurrentTrackId, isLoading }} >
       {children}
     </AudioContext.Provider>
   )

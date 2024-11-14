@@ -69,7 +69,7 @@ const P5Background = () => {
 
       let container;
       var inc = 0.5;
-      var scale = 30;
+      var scale = 100;
       var cols, rows;
       var zoff = 0;
       var particles = [];
@@ -116,10 +116,11 @@ const P5Background = () => {
             // p.push();
             // p.translate(x * scale, y * scale);
             // p.rotate(v.heading());
+            // p.strokeWeight(1);
             // p.line(0, 0, scale, 0);
             // p.pop();
           }
-          yoff += 0.1;
+          yoff += 100;
           zoff += 0.00005;
         }
 
