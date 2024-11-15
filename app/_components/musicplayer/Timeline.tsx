@@ -3,7 +3,7 @@ import { useAudio } from '../../_context/audioContext';
 import { useEffect, useState } from 'react';
 
 
-export default function Timeline() {
+export default function Timeline({ nextTrack }: { nextTrack: () => void }) {
   const { files, audioInstances, currentTrackId, isPlaying, setIsPlaying } = useAudio();
   const [currentTime, setCurrentTime] = useState<number>(0);
 
@@ -17,6 +17,7 @@ export default function Timeline() {
           setCurrentTime(0);
           audioInstances[currentTrackId].currentTime = 0;
           setIsPlaying(false);
+          nextTrack();
         }
       }, 1000);
 

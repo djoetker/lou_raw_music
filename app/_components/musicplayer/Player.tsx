@@ -37,6 +37,21 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
     }
   };
 
+  const previousTrack = () => {
+    if (files.length === 0) return;
+    if (currentTrackId && audioInstances[currentTrackId]) {
+      audioInstances[currentTrackId].pause();
+      audioInstances[currentTrackId].currentTime = 0;
+      const currentTrackIndex = files.findIndex(file => file.key === currentTrackId);
+      const previousTrackIndex = (currentTrackIndex - 1 + files.length) % files.length;
+      const previousTrackId = files[previousTrackIndex].key;
+
+      playFile(previousTrackId);
+    } else {
+      setCurrentTrackId(files[0].key);
+    };
+  };
+
   if (fileKey === "") {
     return (
       <div className="flex flex-col justify-center items-center min-w-[300px] max-h-[300px] p-2">
@@ -44,10 +59,10 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
           <p className='opacity-50 italic h-[3rem] mb-[0.75rem]'>load a track into player</p>
         </section>
         <section className='flex flex-col gap-[0.5rem]'>
-          <Timeline />
+          <Timeline nextTrack={nextTrack} />
         </section>
         <section className='flex flex-row justify-center items-center min-w-[300px] max-h-[300px] p-2'>
-          <button className="flex justify-center items-center left-8 h-fit border-[1px] transition-colors duration-300 border-black hover:bg-slate-100 border-solid rounded-full p-3 mx-[0.5rem] active:shadow-btncl " onClick={nextTrack}>
+          <button className="flex justify-center items-center left-8 h-fit border-[1px] transition-colors duration-300 border-black hover:bg-slate-100 border-solid rounded-full p-3 mx-[0.5rem] active:shadow-btncl " onClick={previousTrack}>
             <PreviousTrack />
           </button>
           <button className="flex justify-center items-center left-8 h-fit border-[1px] transition-colors duration-300 border-black hover:bg-slate-100 border-solid rounded-full p-4 mx-[0.5rem] active:shadow-btncl " onClick={() => playFile(fileKey)}>
@@ -67,10 +82,10 @@ export default function Player({ fileKey }: Readonly<{ fileKey: string }>) {
           <p className='font-hairline text-[0.7rem] mb-[0.75rem]'>LOU RAW</p>
         </section>
         <section className='flex flex-col gap-[0.5rem]'>
-          <Timeline />
+          <Timeline nextTrack={nextTrack} />
         </section>
         <section className='flex flex-row justify-center items-center min-w-[300px] max-h-[300px] p-2'>
-          <button className="flex justify-center items-center left-8 h-fit border-[1px] transition-colors duration-300 hover:bg-slate-100 border-black border-solid rounded-full p-4 mx-[0.5rem] active:shadow-btncl " onClick={nextTrack}>
+          <button className="flex justify-center items-center left-8 h-fit border-[1px] transition-colors duration-300 hover:bg-slate-100 border-black border-solid rounded-full p-4 mx-[0.5rem] active:shadow-btncl " onClick={previousTrack}>
             <PreviousTrack />
           </button>
           <button className="flex justify-center items-center left-8 h-fit border-[1px] transition-colors duration-300 hover:bg-slate-100 border-black border-solid rounded-full p-4 mx-[0.5rem] active:shadow-btncl " onClick={() => playFile(fileKey)}>
