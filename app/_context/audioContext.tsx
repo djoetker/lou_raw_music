@@ -63,7 +63,7 @@ export function AudioContextProvider({ children }: AudioContextProviderProps) {
 export const useAudio = () => {
   const context = useContext(AudioContext);
   if (!context) {
-    throw new Error("useAudio must be used within an AudioContextProvider");
+    throw new Error("useAudio must be used within an AudioContextProvider!s");
   }
   return context;
 };
