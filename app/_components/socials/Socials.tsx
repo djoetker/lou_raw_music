@@ -1,4 +1,5 @@
 import socialsList from "../../api/other/socialsList.js";
+import { cleanUnderscore } from "../../api/other/cleanUnderscore.js";
 
 export default function Socials() {
 
@@ -12,7 +13,7 @@ export default function Socials() {
             <div key={idx} className="relative w-full ">
               <span className="absolute top-0 left-0.5 text-[0.6rem]">{section}</span>
               <a href={url} target="_blank" rel="noopener noreferrer" className="block bg-[#f5f5f5] bg-opacity-70 text-black border border-solid border-black rounded-sm hover:bg-slate-100 py-[0.75rem] px-[1.5rem] mb-[1rem] text-center w-full max-w-[400px]	">
-                {platform}
+                {cleanUnderscore(platform)}
               </a>
             </div>
           ))}
