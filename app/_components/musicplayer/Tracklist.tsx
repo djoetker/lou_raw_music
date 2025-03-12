@@ -10,9 +10,9 @@ export default function Tracklist({ files, selectForPlayer, isLoading }: { files
     );
   } else {
     return (
-      <div className='h-fit'>
+      <div className='h-fit rounded-sm'>
         {files.map(file => (
-          <div className="flex justify-start items-start w-fit p-[0.125rem] h-fit cursor-pointer" key={file.key} onClick={() => selectForPlayer(file.key)} >
+          <div className="flex justify-start items-start w-fit p-[0.125rem] h-fit cursor-pointer rounded-sm" key={file.key} onClick={() => selectForPlayer(file.key)} >
             <p className='text-black'>{file.key.slice(0, -4)}</p>
           </div>
         ))}
