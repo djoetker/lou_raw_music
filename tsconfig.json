@@ -32,7 +32,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/api/s3/auth/route.js"
+    "app/api/s3/auth/route.js",
+    "app/api/other/cleanUnderscore.js"
   ],
   "exclude": [
     "node_modules"
