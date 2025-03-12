@@ -9,7 +9,7 @@ const P5Background = () => {
         this.pos = p.createVector(p.random(p.width), p.random(p.height));
         this.vel = p5.Vector.random2D();
         this.acc = p.createVector(0, 0);
-        this.maxspeed = 4;
+        this.maxspeed = 1.5;
 
         this.prevPos = this.pos.copy();
 
@@ -68,8 +68,8 @@ const P5Background = () => {
       }
 
       let container;
-      var inc = 0.5;
-      var scale = 100;
+      var inc = 1;
+      var scale = 200;
       var cols, rows;
       var zoff = 0;
       var particles = [];
@@ -89,7 +89,7 @@ const P5Background = () => {
         rows = p.height / scale;
 
 
-        for (let i = 0; i < 2500; i++) {
+        for (let i = 0; i < 1500; i++) {
           particles[i] = new Particle();
         };
 
@@ -109,7 +109,7 @@ const P5Background = () => {
             var index = (x + y * cols);
             var angle = p.noise(xoff, yoff, zoff) * p.TWO_PI;
             var v = p5.Vector.fromAngle(angle);
-            v.setMag(0.5);
+            v.setMag(0.025);
             flowfield[index] = v;
             xoff += inc;
             // p.stroke(0, 50);
@@ -120,8 +120,8 @@ const P5Background = () => {
             // p.line(0, 0, scale, 0);
             // p.pop();
           }
-          yoff += 100;
-          zoff += 0.00005;
+          yoff += 0.5;
+          zoff += 0.00001;
         }
 
         for (let i = 0; i < particles.length; i++) {
