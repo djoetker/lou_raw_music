@@ -249,7 +249,7 @@ const P5Background = () => {
         // Wechsel alle 10 Minuten
         setInterval(() => {
           colorToggle = !colorToggle;
-        }, 60000);
+        }, 120000);
       };
 
       p.draw = () => {
