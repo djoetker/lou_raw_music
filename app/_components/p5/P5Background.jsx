@@ -181,7 +181,7 @@ const P5Background = () => {
         }
 
         this.show = function () {
-          p.stroke(colorToggle ? 255 : 0, 5); // Wechsel zwischen Schwarz & Weiß
+          p.stroke(colorToggle ? 255 : 0, 5);
           p.strokeWeight(1);
           p.line(this.pos.x, this.pos.y, this.prevPos.x, this.prevPos.y);
           this.updatePrev();
@@ -221,7 +221,7 @@ const P5Background = () => {
       }
 
       let container;
-      var inc = 1;
+      var inc = 0.5;
       var scale = 200;
       var cols, rows;
       var zoff = 0;
@@ -246,7 +246,7 @@ const P5Background = () => {
 
         p.loop();
 
-        // Wechsel alle 10 Minuten
+        // Wechsel alle 2 Minuten
         setInterval(() => {
           colorToggle = !colorToggle;
         }, 120000);
