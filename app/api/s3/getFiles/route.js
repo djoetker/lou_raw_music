@@ -14,6 +14,7 @@ export async function GET(req) {
   const params = {
     Bucket: bucketName,
     Prefix: '',
+    MaxKeys: 1000,
   };
 
   try {
